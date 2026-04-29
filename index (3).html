@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avtar Contractors | Est. 1985 | Commercial · Industrial · Residential</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{
+      --orange:#E85D04;
+      --orange-dark:#C74E00;
+      --orange-light:#FF7A2F;
+      --slate:#1C2333;
+      --slate-mid:#2B3548;
+      --slate-light:#3D4F6B;
+      --white:#FFFFFF;
+      --off:#F5F4F1;
+      --muted:#8A929F;
+      --text:#1C2333;
+    }
+    html{scroll-behavior:smooth;}
+    body{font-family:'Source Sans 3',sans-serif;color:var(--text);overflow-x:hidden;background:#fff;}
+
+    /* ── NAV ── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:999;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 5%;height:68px;
+      background:rgba(28,35,51,0.97);
+      border-bottom:3px solid var(--orange);
+    }
+    .logo{font-family:'Oswald',sans-serif;font-size:1.5rem;letter-spacing:3px;color:#fff;text-decoration:none;}
+    .logo span{color:var(--orange);}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;}
+    .nav-links a{color:#bfc8d6;font-size:0.82rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-weight:600;transition:color .2s;}
+    .nav-links a:hover{color:var(--orange);}
+    .nav-btn{background:var(--orange);color:#fff;padding:.5rem 1.4rem;font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s;}
+    .nav-btn:hover{background:var(--orange-light);}
+
+    /* ── HERO ── */
+    .hero{
+      position:relative;min-height:100vh;
+      display:flex;align-items:flex-end;
+      background-color:var(--slate);
+      overflow:hidden;
+    }
+    /* Full bleed construction site photo via CSS */
+    .hero-bg{
+      position:absolute;inset:0;
+      background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&w=1600&q=80');
+      background-size:cover;background-position:center 35%;
+    }
+    .hero-grad{
+      position:absolute;inset:0;
+      background:linear-gradient(
+        110deg,
+        rgba(28,35,51,0.97) 0%,
+        rgba(28,35,51,0.85) 40%,
+        rgba(28,35,51,0.35) 75%,
+        rgba(28,35,51,0.15) 100%
+      );
+    }
+    /* Orange diagonal accent */
+    .hero-accent{
+      position:absolute;top:0;right:0;
+      width:6px;height:100%;
+      background:var(--orange);
+    }
+    .hero-body{
+      position:relative;z-index:2;
+      width:100%;padding:9rem 5% 5rem;
+      display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:flex-end;
+    }
+    .hero-tag{
+      display:inline-flex;align-items:center;gap:.8rem;
+      font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--orange);
+      margin-bottom:1.5rem;font-weight:600;
+    }
+    .hero-tag::before{content:'';width:36px;height:2px;background:var(--orange);}
+    h1{
+      font-family:'Oswald',sans-serif;
+      font-size:clamp(4rem,8.5vw,8rem);
+      font-weight:700;line-height:.92;color:#fff;
+      letter-spacing:2px;margin-bottom:2rem;
+      text-transform:uppercase;
+    }
+    h1 em{font-style:normal;color:var(--orange);display:block;}
+    .hero-desc{
+      font-size:1.1rem;color:#b8c4d4;line-height:1.7;
+      max-width:520px;font-weight:300;margin-bottom:2.5rem;
+    }
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn-orange{
+      background:var(--orange);color:#fff;
+      padding:1rem 2.2rem;font-family:'Oswald',sans-serif;
+      font-size:.9rem;letter-spacing:2px;text-transform:uppercase;
+      text-decoration:none;font-weight:500;transition:all .25s;
+    }
+    .btn-orange:hover{background:var(--orange-light);transform:translateY(-2px);}
+    .btn-outline-white{
+      border:2px solid rgba(255,255,255,.35);color:#fff;
+      padding:1rem 2.2rem;font-family:'Oswald',sans-serif;
+      font-size:.9rem;letter-spacing:2px;text-transform:uppercase;
+      text-decoration:none;transition:all .25s;
+    }
+    .btn-outline-white:hover{border-color:var(--orange);color:var(--orange);}
+
+    /* hero stats card */
+    .hero-stats{
+      background:var(--orange);
+      padding:2.5rem 2rem;
+      display:flex;flex-direction:column;gap:1.5rem;
+    }
+    .hstat-num{font-family:'Oswald',sans-serif;font-size:3.2rem;color:#fff;line-height:1;font-weight:700;}
+    .hstat-lbl{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-top:.2rem;}
+    .hstat-divider{height:1px;background:rgba(255,255,255,.25);}
+
+    /* ── CREDENTIALS BAR ── */
+    .cred-bar{
+      background:var(--slate);
+      display:flex;justify-content:space-around;align-items:center;
+      padding:1.2rem 5%;flex-wrap:wrap;gap:1rem;
+    }
+    .cred-item{
+      display:flex;align-items:center;gap:.8rem;
+      font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:2px;
+      text-transform:uppercase;color:#fff;
+    }
+    .cred-dot{width:8px;height:8px;background:var(--orange);flex-shrink:0;}
+
+    /* ── SERVICES ── */
+    .services{background:var(--off);}
+    .section-intro{
+      padding:5.5rem 5% 3rem;
+      display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:flex-end;
+    }
+    .sec-eyebrow{font-size:.72rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--orange);margin-bottom:.8rem;}
+    .sec-title{font-family:'Oswald',sans-serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:700;line-height:1.05;letter-spacing:1px;text-transform:uppercase;}
+    .sec-title-dark{color:var(--slate);}
+    .sec-title-white{color:#fff;}
+    .sec-desc{font-size:1rem;color:var(--muted);line-height:1.75;font-weight:300;max-width:420px;}
+
+    /* Photo service grid */
+    .srv-grid{
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      grid-template-rows:300px 300px;
+      gap:4px;
+    }
+    /* Card base */
+    .srv-card{position:relative;overflow:hidden;cursor:pointer;}
+    .srv-card img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform .55s ease;display:block;
+    }
+    .srv-card:hover img{transform:scale(1.06);}
+    /* Orange left-border reveal on hover */
+    .srv-card::before{
+      content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+      background:var(--orange);transform:scaleY(0);transform-origin:bottom;
+      transition:transform .35s ease;z-index:3;
+    }
+    .srv-card:hover::before{transform:scaleY(1);}
+    .srv-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(28,35,51,.92) 0%,rgba(28,35,51,.1) 60%);
+      z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:1.6rem;
+    }
+    .srv-tag{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:.3rem;font-weight:600;}
+    .srv-name{font-family:'Oswald',sans-serif;font-size:1.6rem;color:#fff;letter-spacing:1px;text-transform:uppercase;line-height:1;margin-bottom:.4rem;}
+    .srv-desc{font-size:.82rem;color:#9fb0c8;line-height:1.55;font-weight:300;}
+
+    /* Grid layout: spans */
+    .s1{grid-column:span 5;grid-row:span 2;}/* Facade - tall left */
+    .s2{grid-column:span 4;grid-row:span 1;}/* Glass - top middle */
+    .s3{grid-column:span 3;grid-row:span 1;}/* Consulting - top right */
+    .s4{grid-column:span 4;grid-row:span 1;}/* Housing */
+    .s5{grid-column:span 3;grid-row:span 1;}/* Industrial */
+
+    /* ── ABOUT / WHY US ── */
+    .about{display:grid;grid-template-columns:1fr 1fr;}
+    .about-photo{
+      position:relative;min-height:580px;overflow:hidden;
+      background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&w=900&q=80');
+      background-size:cover;background-position:center;
+    }
+    .about-photo-overlay{position:absolute;inset:0;background:rgba(28,35,51,.45);}
+    .about-badge{
+      position:absolute;right:0;bottom:2.5rem;
+      background:var(--orange);color:#fff;
+      padding:1.4rem 2rem;text-align:right;
+    }
+    .about-badge .big{font-family:'Oswald',sans-serif;font-size:3.5rem;font-weight:700;display:block;line-height:1;}
+    .about-badge .small{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;display:block;opacity:.85;}
+    .about-content{background:var(--slate);padding:5.5rem 4.5rem;display:flex;flex-direction:column;justify-content:center;}
+    .about-content .sec-title{color:#fff;margin-bottom:2rem;}
+    .feat-list{display:flex;flex-direction:column;gap:1.4rem;}
+    .feat{display:flex;gap:1.2rem;align-items:flex-start;}
+    .feat-icon{
+      width:44px;height:44px;background:var(--orange);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.1rem;flex-shrink:0;color:#fff;
+    }
+    .feat h4{font-weight:600;font-size:.97rem;color:#fff;margin-bottom:.25rem;}
+    .feat p{font-size:.87rem;color:#7d8fa3;line-height:1.6;font-weight:300;}
+
+    /* ── PROJECTS ── */
+    .projects-sec{background:#fff;padding:5.5rem 5%;}
+    .proj-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;}
+    .proj-link{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;color:var(--orange);text-decoration:none;}
+    .proj-link:hover{text-decoration:underline;}
+    .proj-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .proj-card{overflow:hidden;position:relative;}
+    .proj-card img{width:100%;height:240px;object-fit:cover;display:block;transition:transform .5s;}
+    .proj-card:hover img{transform:scale(1.07);}
+    .proj-info{padding:.9rem 0;}
+    .proj-type{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);font-weight:600;margin-bottom:.2rem;}
+    .proj-name{font-family:'Oswald',sans-serif;font-size:1.15rem;color:var(--slate);letter-spacing:.5px;text-transform:uppercase;}
+    .proj-sub{font-size:.8rem;color:var(--muted);margin-top:.15rem;}
+
+    /* ── PROCESS ── */
+    .process{background:var(--slate);padding:5.5rem 5%;}
+    .process-grid{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+      margin-top:3.5rem;
+    }
+    .proc{
+      padding:2.5rem;border-left:1px solid rgba(255,255,255,.1);
+      position:relative;
+    }
+    .proc:first-child{border-left:none;}
+    .proc-num{
+      font-family:'Oswald',sans-serif;font-size:4rem;font-weight:700;
+      color:rgba(232,93,4,.2);line-height:1;margin-bottom:.6rem;
+    }
+    .proc-bar{width:32px;height:3px;background:var(--orange);margin-bottom:1rem;}
+    .proc-title{font-family:'Oswald',sans-serif;font-size:1.05rem;color:#fff;letter-spacing:1px;text-transform:uppercase;margin-bottom:.7rem;}
+    .proc-desc{font-size:.87rem;color:#7d8fa3;line-height:1.65;font-weight:300;}
+
+    /* ── CTA BAND ── */
+    .cta-band{
+      display:grid;grid-template-columns:1fr 1fr;
+    }
+    .cta-photo{
+      position:relative;min-height:380px;overflow:hidden;
+      background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&w=900&q=80');
+      background-size:cover;background-position:center 60%;
+    }
+    .cta-photo::after{content:'';position:absolute;inset:0;background:rgba(28,35,51,.4);}
+    .cta-content{
+      background:var(--orange);
+      display:flex;flex-direction:column;justify-content:center;
+      padding:4rem 4.5rem;
+    }
+    .cta-content h2{
+      font-family:'Oswald',sans-serif;font-size:2.8rem;font-weight:700;
+      color:#fff;line-height:1.05;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;
+    }
+    .cta-content p{font-size:1rem;color:rgba(255,255,255,.85);line-height:1.65;font-weight:300;margin-bottom:2rem;}
+    .btn-slate{
+      background:var(--slate);color:#fff;padding:1rem 2.2rem;
+      font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:2px;
+      text-transform:uppercase;text-decoration:none;font-weight:500;
+      display:inline-block;transition:all .25s;width:fit-content;
+    }
+    .btn-slate:hover{background:#0e1520;transform:translateY(-2px);}
+
+    /* ── TESTIMONIALS ── */
+    .testimonials{background:var(--off);padding:5.5rem 5%;}
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    .test-card{
+      background:#fff;padding:2.5rem;
+      border-top:4px solid var(--orange);
+    }
+    .stars{color:var(--orange);font-size:1rem;margin-bottom:1rem;letter-spacing:2px;}
+    .test-body{font-size:.93rem;color:#555;line-height:1.8;font-style:italic;font-weight:300;margin-bottom:1.5rem;}
+    .test-author{font-family:'Oswald',sans-serif;font-size:1rem;color:var(--slate);letter-spacing:1px;text-transform:uppercase;}
+    .test-role{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
+
+    /* ── CONTACT ── */
+    .contact-sec{display:grid;grid-template-columns:1fr 1fr;}
+    .contact-photo{
+      position:relative;min-height:600px;overflow:hidden;
+      background-image:url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&w=900&q=80');
+      background-size:cover;background-position:center;
+    }
+    .contact-photo-overlay{
+      position:absolute;inset:0;background:rgba(28,35,51,.7);
+      display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;
+    }
+    .contact-info-list{display:flex;flex-direction:column;gap:1.2rem;}
+    .ci{display:flex;gap:1rem;align-items:flex-start;}
+    .ci-ico{width:38px;height:38px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+    .ci strong{display:block;color:rgba(255,255,255,.5);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-bottom:.1rem;}
+    .ci span{color:#fff;font-size:.93rem;}
+    .contact-form-wrap{background:var(--slate);padding:4.5rem;}
+    .contact-form-wrap .sec-title{color:#fff;margin-bottom:2.5rem;}
+    .cform{display:flex;flex-direction:column;gap:1rem;}
+    .frow{display:flex;gap:1rem;}
+    .frow .fg{flex:1;}
+    .fg{display:flex;flex-direction:column;gap:.35rem;}
+    .fg label{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:600;color:var(--muted);}
+    .fg input,.fg select,.fg textarea{
+      padding:.85rem 1rem;border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.06);
+      font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:#fff;outline:none;
+      transition:border-color .2s;
+    }
+    .fg input::placeholder,.fg textarea::placeholder{color:#5a6b80;}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--orange);}
+    .fg select option{background:var(--slate);color:#fff;}
+    .fg textarea{resize:vertical;min-height:110px;}
+
+    /* ── FOOTER ── */
+    footer{background:#0f141e;padding:4rem 5% 2rem;}
+    .footer-top{
+      display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:4rem;
+      padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:1.5rem;
+    }
+    .footer-logo{font-family:'Oswald',sans-serif;font-size:1.8rem;color:#fff;letter-spacing:3px;margin-bottom:.8rem;}
+    .footer-logo span{color:var(--orange);}
+    .footer-tagline{font-size:.88rem;color:#4d5e73;line-height:1.75;font-weight:300;}
+    .fcol h5{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:1rem;font-weight:600;}
+    .fcol ul{list-style:none;display:flex;flex-direction:column;gap:.55rem;}
+    .fcol ul a{color:#4d5e73;text-decoration:none;font-size:.88rem;transition:color .2s;}
+    .fcol ul a:hover{color:var(--orange);}
+    .footer-btm{display:flex;justify-content:space-between;font-size:.78rem;color:#2d3a4a;}
+
+    /* ANIMATION */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+    .reveal.in{opacity:1;transform:none;}
+
+    /* MOBILE */
+    @media(max-width:900px){
+      .nav-links{display:none;}
+      .hero-body{grid-template-columns:1fr;}
+      .hero-stats{flex-direction:row;gap:1.5rem;}
+      .section-intro{grid-template-columns:1fr;}
+      .srv-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}
+      .s1,.s2,.s3,.s4,.s5{grid-column:span 1;grid-row:span 1;}
+      .srv-card img{height:220px;}
+      .about,.cta-band,.contact-sec{grid-template-columns:1fr;}
+      .about-photo,.cta-photo,.contact-photo{min-height:300px;}
+      .proj-grid{grid-template-columns:1fr 1fr;}
+      .process-grid{grid-template-columns:1fr 1fr;}
+      .test-grid{grid-template-columns:1fr;}
+      .footer-top{grid-template-columns:1fr 1fr;gap:2rem;}
+      .contact-form-wrap{padding:2.5rem 5%;}
+      .cta-content{padding:2.5rem 5%;}
+      .about-content{padding:3rem 5%;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#"><span>AVTAR</span> CONTRACTORS</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-btn">Free Quote</a>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-body">
+    <div>
+      <div class="hero-tag">Established 1985 · 40 Years of Excellence</div>
+      <h1>We Build<br><em>Better.</em></h1>
+      <p class="hero-desc">
+        Avtar Contractors delivers world-class facade systems, glass curtain walls, housing group developments and construction consulting — at the best price in market.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-orange">Get a Free Quote</a>
+        <a href="#services" class="btn-outline-white">Our Services</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hstat-num">40+</div>
+        <div class="hstat-lbl">Years in Business</div>
+      </div>
+      <div class="hstat-divider"></div>
+      <div>
+        <div class="hstat-num">500+</div>
+        <div class="hstat-lbl">Projects Completed</div>
+      </div>
+      <div class="hstat-divider"></div>
+      <div>
+        <div class="hstat-num">3</div>
+        <div class="hstat-lbl">Sectors Served</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS BAR -->
+<div class="cred-bar">
+  <div class="cred-item"><div class="cred-dot"></div>Commercial Construction</div>
+  <div class="cred-item"><div class="cred-dot"></div>Industrial Facilities</div>
+  <div class="cred-item"><div class="cred-dot"></div>Housing Group Projects</div>
+  <div class="cred-item"><div class="cred-dot"></div>Facade & Glass Specialists</div>
+  <div class="cred-item"><div class="cred-dot"></div>Best Price Guaranteed</div>
+</div>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services" id="services">
+  <div class="section-intro reveal">
+    <div>
+      <div class="sec-eyebrow">What We Do</div>
+      <h2 class="sec-title sec-title-dark">Our Core<br>Services</h2>
+    </div>
+    <p class="sec-desc">
+      From aluminium facade cladding to full housing township delivery — we bring the same obsession with quality and cost-efficiency to every single project.
+    </p>
+  </div>
+
+  <div class="srv-grid">
+    <!-- 1. FACADE - big left -->
+    <div class="srv-card s1">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&w=900&q=80" alt="Facade and cladding construction"/>
+      <div class="srv-overlay">
+        <div class="srv-tag">Service 01</div>
+        <div class="srv-name">Facade &<br>Cladding</div>
+        <div class="srv-desc">Aluminium cladding, rain-screen panels, architectural envelope systems for commercial & high-rise buildings.</div>
+      </div>
+    </div>
+
+    <!-- 2. GLASS -->
+    <div class="srv-card s2">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&w=700&q=80" alt="Glass curtain wall installation"/>
+      <div class="srv-overlay">
+        <div class="srv-tag">Service 02</div>
+        <div class="srv-name">Glass Installations</div>
+        <div class="srv-desc">Curtain walls, structural glazing, shopfronts & skylights.</div>
+      </div>
+    </div>
+
+    <!-- 3. CONSULTING -->
+    <div class="srv-card s3">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&w=600&q=80" alt="Construction consulting and project management"/>
+      <div class="srv-overlay">
+        <div class="srv-tag">Service 03</div>
+        <div class="srv-name">Consulting</div>
+        <div class="srv-desc">Site audits, cost planning & project management.</div>
+      </div>
+    </div>
+
+    <!-- 4. HOUSING -->
+    <div class="srv-card s4">
+      <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&w=700&q=80" alt="Housing group development"/>
+      <div class="srv-overlay">
+        <div class="srv-tag">Service 04</div>
+        <div class="srv-name">Housing Groups</div>
+        <div class="srv-desc">End-to-end residential townships — delivered on time & on budget.</div>
+      </div>
+    </div>
+
+    <!-- 5. INDUSTRIAL -->
+    <div class="srv-card s5">
+      <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&w=600&q=80" alt="Industrial warehouse construction"/>
+      <div class="srv-overlay">
+        <div class="srv-tag">Service 05</div>
+        <div class="srv-name">Industrial</div>
+        <div class="srv-desc">Warehouses, plants & logistics facilities.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT / WHY US ═══ -->
+<div class="about" id="about">
+  <div class="about-photo">
+    <div class="about-photo-overlay"></div>
+    <div class="about-badge">
+      <span class="big">40</span>
+      <span class="small">Years of Trust</span>
+    </div>
+  </div>
+  <div class="about-content reveal">
+    <div class="sec-eyebrow">Why Avtar</div>
+    <h2 class="sec-title sec-title-white">Quality You See.<br>Price That Wins.</h2>
+    <div class="feat-list">
+      <div class="feat">
+        <div class="feat-icon">🏗️</div>
+        <div>
+          <h4>Best Price in Market</h4>
+          <p>Transparent, detailed cost breakdowns with no hidden fees. We consistently outprice the competition without sacrificing quality anywhere it counts.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔩</div>
+        <div>
+          <h4>World-Class Quality Standards</h4>
+          <p>Every facade panel, every glass unit, every structural element — inspected and certified before handover.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📅</div>
+        <div>
+          <h4>On-Time, Every Time</h4>
+          <p>40 years of experience means 40 years of learning how to plan and execute without delays.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🤝</div>
+        <div>
+          <h4>One Partner, Full Scope</h4>
+          <p>From consulting and design-coordination through to construction, finishing, and handover — one team, start to finish.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PROJECTS ═══ -->
+<section class="projects-sec" id="projects">
+  <div class="proj-hdr reveal">
+    <div>
+      <div class="sec-eyebrow">Our Work</div>
+      <h2 class="sec-title sec-title-dark">Recent Projects</h2>
+    </div>
+    <a href="#contact" class="proj-link">Start Yours →</a>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&w=600&q=80" alt="Tower facade project"/>
+      <div class="proj-info">
+        <div class="proj-type">Commercial · Facade</div>
+        <div class="proj-name">Northgate Tower Facade</div>
+        <div class="proj-sub">Aluminium curtain wall · 24 floors</div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&w=600&q=80" alt="Housing township"/>
+      <div class="proj-info">
+        <div class="proj-type">Residential · Housing</div>
+        <div class="proj-name">Greenfield Residences</div>
+        <div class="proj-sub">280-unit township · Completed 2023</div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&w=600&q=80" alt="Industrial warehouse"/>
+      <div class="proj-info">
+        <div class="proj-type">Industrial · Warehouse</div>
+        <div class="proj-name">Apex Logistics Hub</div>
+        <div class="proj-sub">85,000 sq ft distribution centre</div>
+      </div>
+    </div>
+    <div class="proj-card reveal">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&w=600&q=80" alt="Glass installation"/>
+      <div class="proj-info">
+        <div class="proj-type">Commercial · Glass</div>
+        <div class="proj-name">Meridian Office Glazing</div>
+        <div class="proj-sub">Structural glass lobby & curtain wall</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process">
+  <div class="reveal">
+    <div class="sec-eyebrow">How We Work</div>
+    <h2 class="sec-title sec-title-white">Simple Process.<br>Exceptional Results.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="proc reveal">
+      <div class="proc-num">01</div>
+      <div class="proc-bar"></div>
+      <div class="proc-title">Free Site Consultation</div>
+      <p class="proc-desc">We visit your site, understand your requirements, and give you an honest assessment — at no charge, no obligation.</p>
+    </div>
+    <div class="proc reveal">
+      <div class="proc-num">02</div>
+      <div class="proc-bar"></div>
+      <div class="proc-title">Detailed Proposal</div>
+      <p class="proc-desc">Transparent cost breakdown, material specs, milestone timeline, and payment structure — all in writing.</p>
+    </div>
+    <div class="proc reveal">
+      <div class="proc-num">03</div>
+      <div class="proc-bar"></div>
+      <div class="proc-title">Expert Execution</div>
+      <p class="proc-desc">Skilled crews, quality-certified materials, and rigorous site management — every subcontractor managed in-house.</p>
+    </div>
+    <div class="proc reveal">
+      <div class="proc-num">04</div>
+      <div class="proc-bar"></div>
+      <div class="proc-title">Handover & Aftercare</div>
+      <p class="proc-desc">Full inspection, documentation, and post-handover support. We don't disappear after sign-off.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA BAND ═══ -->
+<div class="cta-band">
+  <div class="cta-photo"></div>
+  <div class="cta-content">
+    <h2>Ready to Break Ground?</h2>
+    <p>Whether it's a glass curtain wall, a housing township, or an industrial complex — get a free estimate from 40 years of expertise. No hard sell, just honest advice.</p>
+    <a href="#contact" class="btn-slate">Get Your Free Quote Today</a>
+  </div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials">
+  <div class="reveal">
+    <div class="sec-eyebrow">Client Words</div>
+    <h2 class="sec-title sec-title-dark">What They Say</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="test-body">"Avtar handled our 24-floor curtain wall glazing and finished two weeks ahead of schedule. The quality was exceptional — zero complaints from the building inspector."</p>
+      <div class="test-author">Rajesh Mehra</div>
+      <div class="test-role">Director, Skyline Commercial Developments</div>
+    </div>
+    <div class="test-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="test-body">"We trusted Avtar with our 280-unit housing township. They managed everything from foundations to finishing — delivered on time, under budget, and built to last."</p>
+      <div class="test-author">Sunita Patel</div>
+      <div class="test-role">MD, Greenfield Housing Group</div>
+    </div>
+    <div class="test-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="test-body">"Their consulting team saved us significantly during planning alone. When construction started, execution was seamless. Best contracting decision we've made in 15 years."</p>
+      <div class="test-author">Arjun Kapoor</div>
+      <div class="test-role">CEO, Apex Industrial Ventures</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section class="contact-sec" id="contact">
+  <div class="contact-photo">
+    <div class="contact-photo-overlay">
+      <div class="contact-info-list">
+        <div class="ci"><div class="ci-ico">📞</div><div><strong>Phone</strong><span>+1 (555) 000-0000</span></div></div>
+        <div class="ci"><div class="ci-ico">✉️</div><div><strong>Email</strong><span>info@avtarcontractors.com</span></div></div>
+        <div class="ci"><div class="ci-ico">📍</div><div><strong>Office</strong><span>Your City, Province, Country</span></div></div>
+        <div class="ci"><div class="ci-ico">🕐</div><div><strong>Hours</strong><span>Mon – Sat · 8:00 AM – 6:00 PM</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-wrap">
+    <div class="sec-eyebrow">Get In Touch</div>
+    <h2 class="sec-title">Let's Build<br>Something Great.</h2>
+    <form class="cform" onsubmit="handleSubmit(event)">
+      <div class="frow">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="John" required/></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Doe" required/></div>
+      </div>
+      <div class="fg"><label>Email Address</label><input type="email" placeholder="john@company.com" required/></div>
+      <div class="fg"><label>Phone Number</label><input type="tel" placeholder="+1 555 000 0000"/></div>
+      <div class="fg">
+        <label>Service Required</label>
+        <select>
+          <option value="">Select a service…</option>
+          <option>Facade & Cladding</option>
+          <option>Glass Installations</option>
+          <option>Housing Group Development</option>
+          <option>Industrial Construction</option>
+          <option>Construction Consulting</option>
+          <option>Other / Multiple Services</option>
+        </select>
+      </div>
+      <div class="fg"><label>Project Details</label><textarea placeholder="Project type, size, location, timeline, budget range…"></textarea></div>
+      <button type="submit" class="btn-orange" style="border:none;cursor:pointer;font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:2px;padding:1rem 2.2rem;">
+        SEND MESSAGE →
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><span>AVTAR</span> CONTRACTORS</div>
+      <p class="footer-tagline">Four decades of world-class construction across facade, glass, residential, and industrial sectors. Commercial, industrial and housing groups trust us for the best price and quality in market. Est. 1985.</p>
+    </div>
+    <div class="fcol">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Facade & Cladding</a></li>
+        <li><a href="#services">Glass Installations</a></li>
+        <li><a href="#services">Housing Groups</a></li>
+        <li><a href="#services">Industrial</a></li>
+        <li><a href="#services">Consulting</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="tel:+15550000000">+1 (555) 000-0000</a></li>
+        <li><a href="mailto:info@avtarcontractors.com">info@avtarcontractors.com</a></li>
+        <li><a href="#contact">Get a Free Quote</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-btm">
+    <span>© 2025 Avtar Contractors. All rights reserved.</span>
+    <span>Est. 1985 · 40 Years of Excellence</span>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e){
+    e.preventDefault();
+    const btn=e.target.querySelector('button');
+    btn.textContent='✓ MESSAGE SENT — WE\'LL BE IN TOUCH!';
+    btn.style.background='#2e7d32';
+    setTimeout(()=>{btn.textContent='SEND MESSAGE →';btn.style.background='';e.target.reset();},4000);
+  }
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((en,i)=>{if(en.isIntersecting)setTimeout(()=>en.target.classList.add('in'),i*90);});
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
